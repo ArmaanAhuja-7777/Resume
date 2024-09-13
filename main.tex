@@ -1,0 +1,350 @@
+%%%%
+% MTecknology's Resume
+%%%%
+% Author: Michael Lustfield
+% License: CC-BY-4
+% - https://creativecommons.org/licenses/by/4.0/legalcode.txt
+%%%%
+
+\documentclass[letterpaper,10pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%
+%% BEGIN_FILE: mteck.sty
+%% NOTE: Everything between here and END_FILE can
+%% be relocated to "mteck.sty" and then included with:
+%\usepackage{mteck}
+
+% Dependencies
+% NOTE: Some packages (lastpage, hyperref) require second build!
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{fontawesome5}
+\usepackage{multicol}
+\usepackage{bookmark}
+\usepackage{lastpage}
+
+% Sans-Serif
+%\usepackage[sfdefault]{FiraSans}
+%\usepackage[sfdefault]{roboto}
+%\usepackage[sfdefault]{noto-sans}
+%\usepackage[default]{sourcesanspro}
+
+% Serif
+\usepackage{CormorantGaramond}
+\usepackage{charter}
+
+% Colors
+% Use with \color{Name}
+% Can wrap entire heading with {\color{accent} [...] }
+\usepackage{xcolor}
+\definecolor{accentTitle}{HTML}{0e6e55}
+\definecolor{accentText}{HTML}{0e6e55}
+\definecolor{accentLine}{HTML}{a16f0b}
+
+% Misc. Options
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\urlstyle{same}
+
+% Adjust Margins
+\addtolength{\oddsidemargin}{-0.7in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1.19in}
+\addtolength{\topmargin}{-0.7in}
+\addtolength{\textheight}{1.4in}
+
+\setlength{\multicolsep}{-3.0pt}
+\setlength{\columnsep}{-1pt}
+\setlength{\tabcolsep}{0pt}
+\setlength{\footskip}{3.7pt}
+\raggedbottom
+\raggedright
+
+% ATS Readability
+\input{glyphtounicode}
+\pdfgentounicode=1
+
+%-----------------%
+% Custom Commands %
+%-----------------%
+
+% Centered title along with subtitle between HR
+% Usage: \documentTitle{Name}{Details}
+\newcommand{\documentTitle}[2]{
+  \begin{center}
+    {\Huge\color{accentTitle} #1}
+    \vspace{10pt}
+    {\color{accentLine} \hrule}
+    \vspace{2pt}
+    %{\footnotesize\color{accentTitle} #2}
+    \footnotesize{#2}
+    \vspace{2pt}
+    {\color{accentLine} \hrule}
+  \end{center}
+}
+
+% Create a footer with correct padding
+% Usage: \documentFooter{\thepage of X}
+\newcommand{\documentFooter}[1]{
+  \setlength{\footskip}{10.25pt}
+  \fancyfoot[C]{\footnotesize #1}
+}
+
+% Simple wrapper to set up page numbering
+% Usage: \numberedPages
+% WARNING: Must run pdflatex twice!
+\newcommand{\numberedPages}{
+  \documentFooter{\thepage/\pageref{LastPage}}
+}
+
+% Section heading with horizontal rule
+% Usage: \section{Title}
+\titleformat{\section}{
+  \vspace{-5pt}
+  \color{accentText}
+  \raggedright\large\bfseries
+}{}{0em}{}[\color{accentLine}\titlerule]
+
+% Section heading with separator and content on same line
+% Usage: \tinysection{Title}
+\newcommand{\tinysection}[1]{
+  \phantomsection
+  \addcontentsline{toc}{section}{#1}
+  {\large{\bfseries\color{accentText}#1} {\color{accentLine} |}}
+}
+
+% Indented line with arguments left/right aligned in document
+% Usage: \heading{Left}{Right}
+\newcommand{\heading}[2]{
+  \hspace{10pt}#1\hfill#2\\
+}
+
+% Adds \textbf to \heading
+\newcommand{\headingBf}[2]{
+  \heading{\textbf{#1}}{\textbf{#2}}
+}
+
+% Adds \textit to \heading
+\newcommand{\headingIt}[2]{
+  \heading{\textit{#1}}{\textit{#2}}
+}
+
+% Template for itemized lists
+% Usage: \begin{resume_list} [items] \end{resume_list}
+\newenvironment{resume_list}{
+  \vspace{-7pt}
+  \begin{itemize}[itemsep=-2px, parsep=1pt, leftmargin=30pt]
+}{
+  \end{itemize}
+  %\vspace{-2pt}
+}
+
+% Formats an item to use as an itemized title
+% Usage: \itemTitle{Title}
+\newcommand{\itemTitle}[1]{
+  \item[] \underline{#1}\vspace{4pt}
+}
+
+% Bullets used in itemized lists
+\renewcommand\labelitemi{--}
+
+%% END_FILE: mteck.sty
+%%%%%%%%%%%%%%%%%%%%%%
+
+
+%===================%
+% John Doe's Resume %
+%===================%
+
+%\numberedPages % NOTE: lastpage requires a second build
+%\documentFooter{\thepage of 2} % Does similar without using lastpage
+\begin{document}
+
+  %---------%
+  % Heading %
+  %---------%
+
+  \documentTitle{Armaan Ahuja}{
+    % Web Version
+    %\raisebox{-0.05\height} \faPhone\ [redacted - web copy] ~
+    %\raisebox{-0.15\height} \faEnvelope\ [redacted - web copy] ~
+    %%
+    \href{tel:1234567890}{
+      \raisebox{-0.05\height} \faPhone\ +917973252563} ~ | ~
+    \href{mailto:user@domain.tld}{
+      \raisebox{-0.15\height} \faEnvelope\ armaanahuja7777@gmail.com} ~ | ~
+    \href{https://linkedin.com/in/USER/}{
+      \raisebox{-0.15\height} \faLinkedin\ linkedin.com/in/mech-minds-250758221/} ~ | ~
+    \href{https://github.com/USER}{
+      \raisebox{-0.15\height} \faGithub\ github.com/ArmaanAhuja}
+  }
+
+  %---------%
+  % Summary %
+  %---------%
+
+  \tinysection{Summary}
+  Simplified version of a monstrosity that I built back in college using current best practices.
+
+  %--------%
+  % Skills %
+  %--------%
+
+  \section{Skills}
+
+  \begin{multicols}{2}
+    \begin{itemize}[itemsep=3px, parsep=1pt, leftmargin=75pt]
+    % \begin{description}[style=nextline, leftmargin=50pt, labelsep=10pt] 
+      \item[\textbf{IoT}] Arduino, Raspberry pi, Esp32, Esp8266
+      \item[\textbf{Cloud}]  DigitalOcean, Linode, GCP, AWS
+      \item[\textbf{Languages}] Python, PHP, Javascript, Dart, NodeJs, C++
+      \item[\textbf{Frameworks}] Flask, Flutter, ReactJs, Laravel
+      \item[\textbf{OS}] Debian, Ubuntu, Fedora, Arch Linux
+      \item[\textbf{3d modelling}] Autodesk Fusion 360, Blender, Onshape
+       \item[\textbf{Testing}] Pytest, Docker
+    \end{itemize}
+        % \end{description}
+
+  \end{multicols}
+
+  
+% \begin{multicols}{2}
+%     \begin{description}[style=nextline, leftmargin=0pt, labelwidth=60pt, labelsep=10pt]  % Customizing description list
+%       \item[\textbf{IoT}] Arduino, Raspberry Pi, ESP32, ESP8266
+%       \item[\textbf{Cloud}] DigitalOcean, Linode, GCP, AWS
+%       \item[\textbf{Languages}] Python, PHP, Javascript, Dart, NodeJs, C++
+%       \item[\textbf{Frameworks}] Flask, Flutter, ReactJs, Laravel
+%       \item[\textbf{OS}] Debian, Ubuntu, Fedora, Arch Linux
+%       \item[\textbf{3D Modelling and Simulation}] Autodesk Fusion 360, Blender, Matlab, Onshape
+%       \item[\textbf{Testing}] Pytest, Docker
+%     \end{description}
+% \end{multicols}
+
+  %------------%
+  % Experience %
+  %------------%
+
+  \section{Experience}
+
+  \headingBf{Mech-Minds}{Jan 2024 - May 2024}
+  \headingIt{(Startup)}{}
+  \begin{resume_list}
+    \itemTitle{Supplier chain and Marketing}
+    \item Worked on marketing strategies like cold calling and youtube affiliate marketing
+    \item Made all the designs using figma and canva and made myself handy in those tools.
+    \item Collaborated with different youtubers and societies of other colleges.
+    \item Collaborated with suppliers all over India to provide electronic components at affordable prices.
+    \vspace{3pt}
+    \itemTitle{Website Interface and tracking tools}
+    \item Automated tasks like mails to customers about active carts, unprocessed checkouts and delivery of items.
+    \item Made delivery of items seamless with  Shiprocket integration in the website
+    \item Made easy payment solution for customers by integrating razorpay payment gateway.
+     \item Configured analysis tools like Facebook insights and google analytics to monitor customer retention and most visited pages.
+  \end{resume_list}
+
+  \headingBf{Secure Schools}{Jun 2022 - July 2022}
+  \headingIt{(Technical head)}{}
+  \begin{resume_list}
+    \item Made government schools secure by implementing security surveillance systems like camers using models trained to find anomalies
+    \item Oversaw technical part of implementing such a system in low privileged schools. 
+    \item Used sensors and other monitoring systems where the availability of camera wasn't possible.
+    \item Implemented SMS system for police if any person is detected in school campus at unusual times of day.
+    \item Worked closely in an Initiative to reduce the risk of breaking into government schools making them safe.
+        
+  \end{resume_list}
+
+  %-----------%
+  % Education %
+  %-----------%
+
+  \section{Education}
+   \headingBf{Mata Gujri Public School}{} % Note: Adding year(s) exposes an implied age
+  \headingIt{10th - 96.75, 12th - 94.95}{}
+  \vspace{5pt}
+
+  \headingBf{Thapar Institute of Enginnering and Technology}{} % Note: Adding year(s) exposes an implied age
+  \headingIt{Bachelor of Engineering in Computer Engineering}{}
+  \headingIt{Minors: Edge Ai and Robotics, Cybersecurity}{}
+
+ 
+
+  %----------------------------%
+  % Extracurricular Activities %
+  %----------------------------%
+
+  \section{Projects}
+
+  \headingBf{Cheify - A food delivery app}{Sep 2023 - Dec 2023}
+  \begin{resume_list}
+    \item Worked on the startup for ingredients delivery door to door.
+    \item Became familiar with operating procedures of a startup, from building an app to marketing.
+    \item Became familiar with technologies like Dart, Flutter, PHP, Laravel, Razorpay payment gateway.
+  \end{resume_list}
+
+   \headingBf{Jarvis - An AI based system for daily tasks}{September 2023 -- Present}
+  \begin{resume_list}
+    \item Worked on building an AI based system for my house.
+    \item It did things like control all the lights, control the gas knobs, check security camera for any flaws, fetch result from any website. 
+    \item Became familiar with software technologies like Chat-GPT and using API's, languages like python and tools like google collab. 
+    \item Became familiar with hardware technologies like ESP32, Relays, servo and stepper motors and interaction of hardware and software. 
+  \end{resume_list}
+
+  
+  \headingBf{Mech-Minds - A user friendly electronics delivery website}{Jan 2024 - May 2024}
+  \begin{resume_list}
+    \item Made a website using wix for selling electronics items
+    \item Became familiar with technologies like google and Facebook ads, Facebook insights and google analytics and hosting systems like Digital Ocean
+    \item Came to know the ins-and-outs of running an e-commerce website.
+  \end{resume_list}
+
+     \headingBf{Gym Website}{Jan 2021 -- Feb 2021}
+  \begin{resume_list}
+    \item Worked full stack on building a website for my Gym.
+    \item Became familiar with MERN stack for building a website. 
+  \end{resume_list}
+
+  \headingBf{RC Plane and Drone}{Jun 2021 -- Aug 2021}
+  \begin{resume_list}
+    \item Made a Rc Plane and Drone from Scratch.
+    \item This project made me familiar with workings of Brushless motos, Radio Transmitters and Recievers, GPS systems and Flight controllers.
+    \item Made me familiar with aviation modelling and fluid dynamics simulations and tools like MatLab.
+  \end{resume_list}
+
+  \headingBf{RoomSync - An effecient energy solution}{May 2024 -- Present}
+  \begin{resume_list}
+    \item Made a project to control the appliances of hostel room from anywhere in the world.
+    \item This made me familiar with Firebase database and NodeJs backend and controlling hardware like Esp32.
+    \item An Initiative to cut our energy needs without compromising the comfort of appliances.
+  \end{resume_list}
+
+
+ \section{Hobbies and Interests}
+
+\subsection*{Music}
+\textbf{Violin and Flute}: Over 3 years of experience playing the violin and 6 years playing the flute, with a deep passion for both instruments.
+
+\vspace{5pt}
+
+\subsection*{Astronomy}
+\textbf{Astronomy Enthusiast}: Avid interest in exploring the cosmos and understanding celestial phenomena. Owns a personal telescope for stargazing and observational studies.
+
+    
+\end{document}
+
+
+
+  \section{Education}
+   \headingBf{Mata Gujri Public School}{} % Note: Adding year(s) exposes an implied age
+  \headingIt{10th - 96.75, 12th - 94.95}{}
+  \vspace{5pt}
+
+  \headingBf{Thapar Institute of Enginnering and Technology}{} % Note: Adding year(s) exposes an implied age
+  \headingIt{Bachelor of Engineering in Computer Engineering}{}
+  \headingIt{Minors: Edge Ai and Robotics, Cybersecurity}{}
+
+ 
